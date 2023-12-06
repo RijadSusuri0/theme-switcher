@@ -1,4 +1,4 @@
-const colorThemes = docu9ment.querySelectorAll('[name="theme"]');
+const colorThemes = document.querySelectorAll('[name="theme"]');
 
 // store theme
 const storeTheme = function(theme) {
@@ -13,12 +13,14 @@ const setTheme = function() {
         }
     });
     // fallback for no :has() support
-    document.documentElement.className = theme;
+    document.documentElement.className = activeTheme;
 };
 
 colorThemes.forEach(themeOption => {
     themeOption.addEventListener('click', () => {
         storeTheme(themeOption.id);
+        //fallback for no :has() support
+    document.documentElement.className = themeOption.id;
     });
 });
 
